@@ -1,0 +1,4 @@
+- source: ESA_presentation.qmd
+  quarto-pub:
+    - id: 82e302b3-4602-4612-a7ef-313cd9ef543d
+      url: 'https://atlas-of-living-australia.quarto.pub/sharing-biodiversity-data-with-galaxias'

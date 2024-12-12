@@ -31,13 +31,14 @@ library(tidyr)
 library(tibble)
 library(zip)
 library(galah)
+library(galaxias)
 
-# load galaxias remotely WHILE TESTING ONLY
-current_workspace <- getwd()
-setwd("/Users/wes186/Documents/Work/Development/AtlasOfLivingAustralia/galaxias")
-devtools::load_all()
-setwd(current_workspace)
-rm(current_workspace)
+## load galaxias remotely WHILE TESTING ONLY
+# current_workspace <- getwd()
+# setwd("/Users/wes186/Documents/Work/Development/AtlasOfLivingAustralia/galaxias")
+# devtools::load_all()
+# setwd(current_workspace)
+# rm(current_workspace)
 ```
 
 An *archive* is a `.zip` file containing three things:
@@ -180,6 +181,7 @@ use_metadata() # creates the following file:
 ```{r}
 #| label: print-metadata-md
 #| echo: FALSE
+#| class-output: hscroll
 readLines("metadata.md")[1:15] |>
   paste0("\n") |>
   cat()
@@ -191,13 +193,13 @@ Convert to EML
 #| label: build-metadata
 #| echo: TRUE
 #| eval: FALSE
-#| class-output: hscroll
 build_metadata() # creates the following file:
 ```
 
 ```{r}
 #| label: print-metadata-xml
 #| echo: FALSE
+#| class-output: hscroll
 build_metadata()
 readLines("./data/eml.xml")[1:15] |> # check resulting file
   paste0("\n") |>
@@ -242,13 +244,13 @@ Automated process for mapping files & fields
 #| label: build-schema
 #| eval: FALSE
 #| echo: TRUE
-#| class-output: hscroll
 build_schema()
 ```
 
 ```{r}
 #| label: view-schema
 #| echo: FALSE
+#| class-output: hscroll
 build_schema()
 readLines("./data/meta.xml")[1:15] |> # check resulting file
   paste0("\n") |>
@@ -289,13 +291,18 @@ readLines("./data/meta.xml")[1:15] |> # check resulting file
 
 ## Archive
 Automated process for zipping the `/data` folder
+```{r}
+#| label: simulate-build-archive
+#| echo: TRUE
+#| eval: FALSE
+build_archive()
+```
 
 ```{r}
 #| label: build-archive
-#| echo: TRUE
+#| echo: FALSE
 #| class-output: hscroll
 archive_location <- build_archive()
-
 zip_list(archive_location)[, 1:4] |>
   as_tibble()
 ```
@@ -339,6 +346,8 @@ galaxias_config(gbif = list(
     username = "atlasoflivingaustralia",
     email = "ala4r@ala.org.au",
     password = "galah-gbif-test-login"))
+file <- paste0(getwd(), ".zip")
+# file.exists(file)
 ```
 
 
@@ -354,7 +363,8 @@ galaxias_config(gbif = list(username = "a_gbif_user",
 ```{r}
 #| label: gbif-validate
 #| echo: TRUE
-# validator_result <- validate_archive(archive_location)
+#| eval: FALSE
+validate_archive(archive_location) # coming soon!
 ```
 
 ## Process
@@ -418,7 +428,7 @@ Get an example dataset
 > declines.* [https://doi.org/10.5061/dryad.75s51](https://doi.org/10.5061/dryad.75s51)
 
 <br>
-We place raw data (`Frogwatch_dataset.xlsx`)<br>in the `data-raw` folder
+Place raw data (`Frogwatch_dataset.xlsx`)<br>in the `data-raw` folder
 
 ## Setup
 Load required packages
@@ -440,18 +450,6 @@ library(tibble)   # tibbles
 library(zip)      # handle .zip files
 ```
 
-
-## Data Import
-Sites
-```{r}
-#| label: read-sites
-#| echo: TRUE
-sites <- read_xlsx("data-raw/Frogwatch_dataset.xlsx", 
-                   sheet = "sites") |>
-  clean_names()
-glimpse(sites)
-```
-
 ## Setup
 Establish an RStudio project
 
@@ -468,6 +466,17 @@ galaxias_project()
 ├── projectname.Rproj                : RStudio project file
 ├── data-raw                         : Folder to store source data
 └── data                             : Folder to store processed data
+```
+
+## Data Import
+Sites
+```{r}
+#| label: read-sites
+#| echo: TRUE
+sites <- read_xlsx("data-raw/Frogwatch_dataset.xlsx", 
+                   sheet = "sites") |>
+  clean_names()
+glimpse(sites)
 ```
 
 ## Data Import
@@ -558,7 +567,6 @@ Save out
 events <- obs |>
   select(any_of(event_terms()))
 write_csv(events, "data/events.csv")
-check_dataset(events)
 ```
 
 
@@ -636,7 +644,6 @@ Export
 occurrences <- obs_long |>
   select(any_of(occurrence_terms()))
 write_csv(occurrences, file = "./data/occurrences.csv")
-check_dataset(occurrences)
 ```
 
 ## Summary

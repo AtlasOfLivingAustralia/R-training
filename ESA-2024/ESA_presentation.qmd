@@ -1,6 +1,6 @@
 ---
 title: "Sharing biodiversity data with `galaxias`"
-author: "Peggy Newman, Dax Kellie & Martin Westgate
+author: "Dax Kellie, Peggy Newman & Martin Westgate
   <br>
   ![](images/ALA_Logo.png){style='width: auto; height: 150px; margin-top: 80px; padding-left: 20px; padding-right: 20px'}![](images/NCRIS_logo.png){style='width: auto; height: 150px; margin-top: 80px; padding-left: 20px; padding-right: 20px'} ![](images/CSIRO_logo.png){style='width: auto; height: 150px; margin-top: 80px; padding-left: 20px; padding-right: 20px'}"
 format:

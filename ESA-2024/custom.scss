@@ -50,3 +50,23 @@ $presentation-heading-color: #E06E53;
   color: #fff;
   font-size: $credits-font-size;
 }
+
+.table-borderless-center > tbody > tr > td,
+.table-borderless-center > tbody > tr > th,
+.table-borderless-center > tfoot > tr > td,
+.table-borderless-center > tfoot > tr > th,
+.table-borderless-center > thead > tr > td,
+.table-borderless-center > thead > tr > th {
+    border: none;
+    color: #637073;
+    text-align: center;
+}
+
+.fa-check {
+  color: #35de6b;
+}
+
+.hscroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}

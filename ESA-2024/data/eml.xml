@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emlEml xmlns:d="eml://ecoinformatics.org/dataset-2.1.0" xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/terms/" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.3/eml-gbif-profile.xsd" system="R-paperbark-package" scope="system" xml:lang="en">
+  <dataset>
+    <title>A Sentence Giving Your Dataset Title In Title Case</title>
+    <abstract>A paragraph outlining the content of the dataset</abstract>
+    <creator>
+      <individualName>
+        <surname>Person</surname>
+        <givenName>Steve</givenName>
+        <electronicMailAddress>example@email.com</electronicMailAddress>
+      </individualName>
+      <organisationName>Put your organisation name here</organisationName>
+      <address>
+        <deliveryPoint>215 Road Street</deliveryPoint>
+        <city>Canberra</city>
+        <administrativeArea>ACT</administrativeArea>
+        <postalCode>2601</postalCode>
+        <country>Australia</country>
+      </address>
+    </creator>
+    <pubdate>2024-01-01</pubdate>
+    <language>EN</language>
+    <licenced>
+      <licenceName>Creative Commons Attribution 4.0 International</licenceName>
+      <url>https://creativecommons.org/licenses/by/4.0/</url>
+      <identifier>CC-BY 4.0 (Int) 4.0</identifier>
+    </licenced>
+  </dataset>
+</emlEml>
